@@ -22,8 +22,8 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
       with:
-        context: .
-        file: ./task1/Dockerfile
+        context: ./task1
+        file: ./Dockerfile
         push: true
         tags: keshizadeh1989/task1:latest
 
