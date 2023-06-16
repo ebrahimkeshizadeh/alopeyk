@@ -1,0 +1,24 @@
+version: "3.3"
+services:
+  wordpress:
+    image: keshizadeh1989/task1:latest
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: <DB_USER>
+      WORDPRESS_DB_PASSWORD: <DB_PASSWORD>
+      WORDPRESS_DB_NAME: <DB_NAME>
+    volumes:
+      - ./wordpress:/var/www/html
+  db:
+    image: mysql:8.0.33
+    restart: always
+    environment:
+      MYSQL_DATABASE: <DB_NAME>
+      MYSQL_USER: <DB_USER>
+      MYSQL_PASSWORD: <DB_PASSWORD>
+      MYSQL_RANDOM_ROOT_PASSWORD: "1"
+    volumes:
+      - ./mysql:/var/lib/mysql
