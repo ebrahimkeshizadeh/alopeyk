@@ -23,7 +23,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: ./task1
-        file: ./Dockerfile
+        file: ./task1/Dockerfile
         push: true
         tags: keshizadeh1989/task1:latest
 
