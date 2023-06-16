@@ -1,0 +1,86 @@
+metadata:
+  name: task2
+  labels: []
+
+service: 
+  type: ClusterIP
+  port: 3000
+  protocol: TCP
+
+image:
+    repository: keshizadeh1989/task2
+    tag: v1.0.0
+    pullPolicy: Always
+    
+spec:
+  replicasCount: 2
+  restartPolicy: OnFailure
+  tolerations: []
+  affinity: {}
+  containers: {}
+    # command: ["/app/task2","update", "recipe_with_promo"]
+    # readinessProbe:
+    #   httpGet:
+    #     path: /ping
+    #     port: 7723
+    #   initialDelaySeconds: 10
+    #   periodSeconds: 5
+    #   timeoutSeconds: 5
+    # livenessProbe:
+    #   httpGet:
+    #     path: /ping
+    #     port: 7723
+    #   initialDelaySeconds: 10
+    #   periodSeconds: 5
+    #   timeoutSeconds: 5
+
+    # resources: 
+    #   limits:
+    #     cpu: 100m
+    #     memory: 200Mi
+    #   requests:
+    #     cpu: 50m
+    #     memory: 100Mi
+
+    # securityContext: 
+      # capabilities: 
+      #   drop:
+      #   - all
+      # readOnlyRootFilesystem: true
+      # runAsNonRoot: true
+      # runAsUser: 10002
+
+    # volumeMounts: 
+      # - name: configs
+      #   mountPath: /task2
+
+    # env: 
+      # Uncomment this section to add container env variables
+      # - name: DB_HOST
+      #   value: '10.11.0.32'
+      # - name: DB_password
+      #   value: 'xxxxxxx'
+
+    # volumes:
+      # - name: configs
+      #   configMap:
+      #     name: vol-configs-task2
+configmap: {}
+
+ingress:
+  annotations: []
+  rules:
+  - host: task2.alopeyk.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: task2
+            port:
+              number: 8080
+  tls: []
+
+
+
