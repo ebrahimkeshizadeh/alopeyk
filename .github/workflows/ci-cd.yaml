@@ -36,4 +36,4 @@ jobs:
         script: |
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker pull keshizadeh1989/task1:latest
-          docker run -d --name your-container-name -p host-port:container-port keshizadeh1989/task1:latest
+          docker run -d --name wordpress -p 80:80 keshizadeh1989/task1:latest
